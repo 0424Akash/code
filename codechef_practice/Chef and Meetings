@@ -1,0 +1,42 @@
+# cook your dish here
+def convert24(str1): 
+	
+	if str1[-2:] == "AM" and str1[:2] == "12": 
+		return "00" + str1[3:5] 	
+	elif str1[-2:] == "AM": 
+		return str1[:2] + str1[3:5] 
+	elif str1[-2:] == "PM" and str1[:2] == "12": 
+		return str1[:2] + str1[3:5] 
+	else:  
+		return str(int(str1[:2]) + 12) + str1[3:5]
+
+def splitandconvert24(str1):
+
+	min_no = 0
+	max_no = 0
+	t1 = str1[:8]
+	t2 = str1[9:17]
+	min_no = int(convert24(t1))
+	max_no = int(convert24(t2))
+	return min_no, max_no
+
+import re
+for j in range(int(input())):
+	P = str(input())
+	n = int(input())
+	a = []
+	for i in range(n):
+		a.append(str(input()))
+	# print(convert24(p))
+	res = []
+	p = int(convert24(P))
+	for i in range(n):
+		wo = 0
+		w1 = 0
+		w0, w1 = splitandconvert24(a[i])
+		if w0 <= p <= w1:
+			res.append('1')
+		else:
+			res.append('0')
+	result = ''.join([str(elem) for elem in res])
+	print(result)
