@@ -20,7 +20,6 @@ def splitandconvert24(str1):
 	max_no = int(convert24(t2))
 	return min_no, max_no
 
-import re
 for j in range(int(input())):
 	P = str(input())
 	n = int(input())
