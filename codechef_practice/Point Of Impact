@@ -1,0 +1,32 @@
+for j in range(int(input())): 
+	n,k,x,y = map(int,input().split())
+	if x == y:
+		print(n,n)
+	elif x>y:
+		x1 = n 
+		y1 = y+n-x
+		x2 = x-y
+		y2 = 0
+		t = k%4
+		if t == 1:
+			print(x1,y1)
+		elif t == 2:
+			print(y1,x1)
+		elif t == 3:
+			print(y2,x2)
+		else:
+			print(x2,y2)
+	else:
+		x1 = x+n-y
+		y1 = n 
+		x2 = 0
+		y2 = y-x
+		t = k%4
+		if t == 1:
+			print(x1,y1)
+		elif t == 2:
+			print(y1,x1)
+		elif t == 3:
+			print(y2,x2)
+		else:
+			print(x2,y2)
