@@ -1,0 +1,53 @@
+def splita(str1):
+	le = len(str1)
+	w0 = str1[0]
+	w1 = str1[1:le]
+	return w0, w1
+
+for j in range(int(input())):
+	n = int(input())
+	s = list(map(str,input().split())) #n integers
+	a = []
+	b = []
+	for i in range(n):
+		ai, bi = splita(s[i])
+		a.append(ai)
+		b.append(bi)
+	# print(a)
+	# print(b)
+	count = 0
+	for i in range(0,n-1):
+		for j in range(i+1,n):
+		if b[i] != b[j] and a[i] != a[j]:
+			str1 = a[i]+b[j]
+			str2 = a[j]+b[i]
+			if str1 in s or str2 in s:
+				count += 0
+			else:
+				count += 2
+	print(count)
+
+######################### OR #############################
+
+
+def splita(str1, str2):
+	s = len(set(str1 + str2))
+	return s
+
+for j in range(int(input())):
+	n = int(input())
+	s = list(map(str,input().split())) #n integers
+	a = {}
+	for i in s:
+		temp = i[1:]
+		if temp in a:
+			a[temp].append(i[0])
+		else:
+			a[temp] = [i[0]]
+	a1 = list(a.keys())
+	count = 0
+	for i in range(len(a)):
+		for j in range(i+1, len(a)):
+			k = splita(a[a1[i]], a[a1[j]])
+			count += (k - len(a[a1[i]])) * (k - len(a[a1[j]]))
+	print(count * 2)
